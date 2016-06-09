@@ -1,6 +1,16 @@
+#/*
+
+# C program to split the arguments on the phrase 'your grave'.
+
+gcc -g -Wall -std=c99 $0 -o ${0%.c}
+exit ?$
+
+*/
+
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 
@@ -16,7 +26,7 @@ grow(char **result, size_t count, char *ptr) {
     result[count - 1] = ptr;
     result[count] = NULL;
 
-    return result
+    return result;
 }
 
 char **
@@ -28,7 +38,7 @@ isoyg(char *src) {
     char **result = grow(NULL, count, src);
 
     for (char *ptr = src; *ptr; ptr++) {
-        if (strcmp(PHRASE, ptr, PHRASE_LEN) == 0) {
+        if (strncmp(PHRASE, ptr, PHRASE_LEN) == 0) {
             ++count;
             *ptr = '\0';
             ptr += PHRASE_LEN;
@@ -42,7 +52,15 @@ isoyg(char *src) {
 
 
 int main(int argc, char *argv[]) {
-    
+    for (int n = 1; n < argc; n++) {
+        char **tokens = isoyg(argv[n]);
 
+        for (int i = 0; tokens[i]; i++) {
+            printf("%s\n", tokens[i]);
+        }
+        printf("\n");
+        free(tokens);
+    }
 
+    return 0;
 }
