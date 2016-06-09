@@ -1,9 +1,12 @@
 #/*
 
 # C program to split the arguments on the phrase 'your grave'.
+#
+# To compile, run as a shell script with bash on a sufficiently
+# unix-like machine with gcc installed.
 
 gcc -g -Wall -std=c99 $0 -o ${0%.c}
-exit ?$
+exit $?
 
 */
 
